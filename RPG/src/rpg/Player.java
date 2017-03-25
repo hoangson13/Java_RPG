@@ -46,7 +46,7 @@ public class Player extends Object{
     
     @Override
     public void render(Graphics g) { //Render hinh
-        g.setColor(Color.YELLOW);
+        g.setColor(Color.decode("#3EC1D3"));
         g.fillRect(x, y, 20, 20);
         g.setColor(Color.WHITE);
         g.drawRect(x, y, 20, 20);

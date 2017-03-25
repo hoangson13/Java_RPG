@@ -18,12 +18,12 @@ public class PlayerBullet extends Object{
     public void tick() {
         y+=velY;
         if(y >= HEIGHT - 25) handler.removeObject(this);       
-        handler.addObject(new Trail(x,y,ID.Trail,Color.blue,handler,0.1f));
+        handler.addObject(new Trail(x,y,ID.Trail,Color.decode("#5BE7A9"),handler,0.1f));
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.blue);
+        g.setColor(Color.decode("#5BE7A9"));
         g.fillOval(x, y, 10, 10);
     }
 

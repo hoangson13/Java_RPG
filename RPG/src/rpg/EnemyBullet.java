@@ -27,13 +27,13 @@ public class EnemyBullet extends Object{
         y+=velY;
         if(y<=0 || y >= HEIGHT - 25) velY *=-1;
         if(x<=0 || x >= HEIGHT - 25) velX *=-1;        
-        handler.addObject(new Trail(x,y,ID.Trail,Color.red,handler,0.1f)); //Thêm viền trail cho đẹp       
+        handler.addObject(new Trail(x,y,ID.Trail,Color.decode("#FF9898"),handler,0.1f)); //Thêm viền trail cho đẹp       
         if(count==100) handler.removeObject(this); //Đạn biến mất sau 1 time
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.decode("#470031"));
         g.fillOval(x, y, 10, 10);
     }
 

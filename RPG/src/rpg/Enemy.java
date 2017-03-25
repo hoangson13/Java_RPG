@@ -52,7 +52,7 @@ public class Enemy extends Object{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.decode("#FF165D"));
         g.fillRect(x, y, 20, 20);
         g.setColor(Color.WHITE);
         g.drawRect(x, y, 20, 20);

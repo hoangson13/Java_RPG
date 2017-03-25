@@ -5,6 +5,9 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RPG extends Canvas implements Runnable {
     
@@ -13,7 +16,7 @@ public class RPG extends Canvas implements Runnable {
 	public static int WIDTH = 900, HEIGHT = 640;
 	private Thread thread;
         private boolean running = false;
-         private final Menu menu;
+        private final Menu menu;
         private final Combat combat;
         private final Map map;
         private final Handler handler;
@@ -24,13 +27,14 @@ public class RPG extends Canvas implements Runnable {
             Map;
         }
         
-        public static STATE rpgSTATE = STATE.Menu;  
-        
+        public static STATE rpgSTATE = STATE.Menu;
+ 
+       
         public RPG (){            
             handler = new Handler();            
             menu = new Menu(this,handler);
             combat = new Combat();
-            map = new Map();
+            map = new Map(handler,this);
             
             this.addMouseListener(menu);
             this.addKeyListener(new KeyInput(handler));//Nhap thong tin tu ban phim 
@@ -70,11 +74,15 @@ public class RPG extends Canvas implements Runnable {
                 tick();
                 delta--;
                 }
-                if (running) render();
+                if (running) try {
+                    render();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(RPG.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 frames ++;
                 if(System.currentTimeMillis()-timer >1000){
                     timer += 1000;
-                    System.out.println("FPS : "+frames);
+                    //System.out.println("FPS : "+frames);
                     frames=0;
                 }
             }
@@ -94,7 +102,7 @@ public class RPG extends Canvas implements Runnable {
         }        
     }
         
-    public void render(){
+    public void render() throws FileNotFoundException{
         BufferStrategy bs= this.getBufferStrategy();
         if(bs==null){
             this.createBufferStrategy(3);
@@ -117,12 +125,12 @@ public class RPG extends Canvas implements Runnable {
         bs.show();
     }
 //Gioi han khung hinh        
-        public static int clamp(int min, int max, int var) { 
-            if ( var <= min ) return var = min;
-            else if ( var >= max) return var = max;
-            else return var;
-        }    
-        
+    public static int clamp(int min, int max, int var) { 
+        if ( var <= min ) return var = min;
+        else if ( var >= max) return var = max;
+        else return var;
+    }       
+    
     public static void main(String[] args) {
             RPG rpg = new RPG();        
     }    

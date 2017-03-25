@@ -16,7 +16,7 @@ public class Combat {
     }
     
     public void render(Graphics g){
-        g.setColor(Color.WHITE);
+        g.setColor(Color.decode("#796DCE"));
         g.fillRect(0, 0, HEIGHT, HEIGHT);
  //Player health bar        
         g.setColor(Color.decode("#FF304F"));

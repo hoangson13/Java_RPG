@@ -28,8 +28,9 @@ public class Menu extends MouseAdapter{
             handler.addObject(new Player(HEIGHT/2,HEIGHT/2,ID.Player, handler));         
             handler.addObject(new Enemy(HEIGHT/2,HEIGHT/2-200,ID.Enemy, handler));
         } else if (mouseOver(mx, my, 300, 250, 300, 64)){
-            rpg.rpgSTATE = STATE.Map;                    
+            rpg.rpgSTATE = STATE.Map;                 
             handler.addObject(new Player(HEIGHT/2,HEIGHT/2,ID.Player, handler));
+            //handler.addObject(new Block(50, 50, ID.Block, handler));            
         }
     }
     
@@ -50,7 +51,7 @@ public class Menu extends MouseAdapter{
     }
     
     public void render ( Graphics g){
-        g.setColor(Color.BLACK);
+        g.setColor(Color.decode("#0E153A"));
         g.fillRect(0,0, WIDTH, HEIGHT);        
         Font font = new Font("arial",1,50);
         g.setFont(font);

@@ -5,5 +5,6 @@ public enum ID {
     PlayerBullet,
     Enemy,
     EnemyBullet,
-    Trail;
+    Trail,
+    Block;
 }
