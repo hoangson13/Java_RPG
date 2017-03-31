@@ -42,8 +42,6 @@ public abstract class Creature extends Entity {
             if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) && !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
 		x += xMove;
             }
-	}else if(MenuState.isCombat==true) {
-            x += xMove;
         }
     }
     public void moveY(){

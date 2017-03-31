@@ -15,7 +15,7 @@ public abstract class State {
     public static State getState(){
 	return currentState;
     }
-	
+
 	//CLASS
         
     protected Handler handler;

@@ -20,6 +20,9 @@ public class PlayerBullet extends Entity{
     public void tick() {
         y-=5;
         if ( y <=0 ) entitymanager.removeEntity(this);
+        
+        entitymanager.addEntity(new Trail(handler, x, y, width, height, entitymanager, Color.blue, 0.1f));
+        
         Entity e = checkEntityCollisions(0f, 0f);
         if(e!=null) hurt(e.getatk());
     }

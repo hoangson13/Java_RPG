@@ -31,7 +31,11 @@ public class EnemyBullet extends Entity{
         y+=Ymove;
         if(y<=0 || y >= handler.getHeight()-5) Ymove *=-1;
         if(x<=0 || x >= handler.getHeight()-5) Xmove *=-1;             
+        
         if(count==100) entitymanager.removeEntity(this); //Đạn biến mất sau 1 time
+        
+        entitymanager.addEntity(new Trail(handler, x, y, width, height, entitymanager, Color.red, 0.1f));
+            
         Entity e = checkEntityCollisions(0f, 0f);
         if(e!=null) hurt(e.getatk());
     }
