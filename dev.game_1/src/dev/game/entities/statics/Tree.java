@@ -2,24 +2,24 @@
 package dev.game.entities.statics;
 
 import dev.game.Handler;
+import dev.game.entities.EntityManager;
 import dev.game.gfx.Asset;
 import dev.game.tiles.Tile;
 import java.awt.Graphics;
 
 
 public class Tree extends StaticEntity {
-
-    public Tree(Handler handler, float x, float y) {
-	super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT * 2);
-        bounds.x = 0;
-        bounds.y = 40;
-        bounds.height=40;
-        bounds.width=40;                
+    private EntityManager entitymanager;
+    public Tree(EntityManager entitymanager, Handler handler, float x, float y) {
+        super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
+        this.entitymanager=entitymanager;
     }
 
     @Override
     public void tick() {
-		
+	if(checkEntityCollisions(0f, 0f)!=null){      
+            active=false;
+        }
     }
 
     @Override

@@ -3,6 +3,7 @@ package dev.game.worlds;
 
 import dev.game.Handler;
 import dev.game.entities.EntityManager;
+import dev.game.entities.creture.Enemy;
 import dev.game.entities.creture.Player;
 import dev.game.entities.statics.Tree;
 import dev.game.tiles.Tile;
@@ -19,10 +20,14 @@ public class World {
     public int spawnY;
 	
     public World(Handler handler, String path,EntityManager entitymanager){
+        
         this.handler = handler;
         this.entitymanager=entitymanager;
         loadWorld(path);
-        //entitymanager.addEntity(new Player(handler, spawnX , spawnY));
+        Player player = new Player(entitymanager,handler, spawnX , spawnY);
+        entitymanager.addEntity( player );
+        entitymanager.addEntity(new Enemy(player, entitymanager, handler, 400, 300, 40, 40));
+        entitymanager.addEntity(new Tree(entitymanager,handler, 380, 280));
     }
 	
     public void tick(){
@@ -78,5 +83,4 @@ public class World {
     public int getHeight(){
         return height;
     }
-
 }

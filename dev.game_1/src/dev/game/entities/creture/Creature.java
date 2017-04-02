@@ -3,7 +3,7 @@ package dev.game.entities.creture;
 
 import dev.game.Handler;
 import dev.game.entities.Entity;
-import dev.game.state.MenuState;
+import dev.game.entities.EntityManager;
 import dev.game.tiles.Tile;
 
 public abstract class Creature extends Entity {
@@ -11,23 +11,25 @@ public abstract class Creature extends Entity {
     public static final int DEFAULT_HEALTH = 10;
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 40, DEFAULT_CREATURE_HEIGHT = 40;
+    public static boolean meetSpawn=false;
 	
     protected int health;
     protected float speed;
     protected float xMove, yMove;
+    
+    EntityManager entitymanager;
 
-    public Creature(Handler handler, float x, float y, int width, int height) {
+    public Creature(EntityManager entitymanager,Handler handler, float x, float y, int width, int height) {
 	super(handler, x, y, width, height);
+        this.entitymanager=entitymanager;
 	health = DEFAULT_HEALTH;
 	speed = DEFAULT_SPEED;
 	xMove = 0;
 	yMove = 0;
     }
-	
+
     public void move(){
-	if(checkEntityCollisions(xMove, 0f)==null)
             moveX();
-        if(checkEntityCollisions(0f, yMove)==null)
             moveY();
     }
 	//Va chạm là k cho di chuyển
@@ -44,6 +46,7 @@ public abstract class Creature extends Entity {
             }
         }
     }
+    
     public void moveY(){
         if(yMove < 0){//Up
             int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;			
@@ -60,8 +63,8 @@ public abstract class Creature extends Entity {
         
     protected boolean collisionWithTile(int x, int y){
 	return handler.getWorld().getTile(x, y).isSolid();
-    }        
-	
+    }
+    
 	//GETTERS SETTERS
 
     public float getxMove() {

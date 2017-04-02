@@ -13,14 +13,13 @@ public class Tile {
     public static Tile dirtTile = new DirtTile(1);
     public static Tile rockTile = new RockTile(2);
     public static Tile waterTile = new WaterTile(3);
-	
 	//CLASS
 	
     public static final int TILEWIDTH = 40, TILEHEIGHT = 40;
 	
     protected BufferedImage texture;
     protected final int id;
-	
+    
     public Tile(BufferedImage texture, int id){
 	this.texture = texture;
 	this.id = id;
@@ -38,7 +37,7 @@ public class Tile {
     public boolean isSolid(){
 	return false;
     }
-	
+    
     public int getId(){
 	return id;
     }	

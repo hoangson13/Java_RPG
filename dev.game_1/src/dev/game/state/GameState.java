@@ -12,9 +12,9 @@ public class GameState extends State {
         EntityManager entitymanager;
 	public GameState(Handler handler,EntityManager entitymanager){
             super(handler);
+            this.entitymanager=entitymanager;            
             world = new World(handler, "res/worlds/world1.txt",entitymanager);
             handler.setWorld(world);
-            this.entitymanager=entitymanager;
         }
 	
 	@Override

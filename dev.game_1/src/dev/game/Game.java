@@ -7,7 +7,6 @@ import dev.game.gfx.Asset;
 import dev.game.gfx.GameCamera;
 import dev.game.input.KeyManager;
 import dev.game.input.MouseManager;
-import dev.game.state.CombatState;
 import dev.game.state.GameState;
 import dev.game.state.MenuState;
 import dev.game.state.State;
@@ -30,7 +29,6 @@ public class Game implements Runnable {
         //STATE
     public State gameState;
     public State menuState;
-    public State combatState;
         
         //INPUT
     private KeyManager keymanager;
@@ -67,7 +65,7 @@ public class Game implements Runnable {
         entitymanager = new EntityManager(handler);            
         gameState = new GameState(handler,entitymanager);
         menuState = new MenuState(handler);
-        combatState = new CombatState(handler,entitymanager);
+
         State.setState(menuState);
     }
         //Tick là thay đổi liên quan tới chuyển động
