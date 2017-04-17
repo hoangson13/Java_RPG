@@ -27,8 +27,8 @@ public class World {
         loadWorld(path);
         Player player = new Player(entitymanager, handler, spawnX, spawnY, ID.WorldEntity);
         entitymanager.addEntity(player);
-        for (int i = 0; i < numMonster; i++) {
-            entitymanager.addEntity(new MonsterSpawner(entitymanager, handler, MonIndex[i][0], MonIndex[i][1], ID.WorldEntity));
+        for (int MonNumber = 0; MonNumber < numMonster; MonNumber++) {
+            entitymanager.addEntity(new MonsterSpawner(MonIndex, MonNumber, entitymanager, handler, 0, 0, ID.WorldEntity));
         }
     }
 
@@ -71,17 +71,18 @@ public class World {
 
         //Lấy chỉ số cho quái
         numMonster = Utils.parseInt(tokens[4]);
-        MonIndex = new int[numMonster][2];
+        MonIndex = new int[numMonster][3];
         for (int i = 0; i < numMonster; i++) {
-            MonIndex[i][0] = Utils.parseInt(tokens[5 + i * 2]);
-            MonIndex[i][1] = Utils.parseInt(tokens[6 + i * 2]);
+            MonIndex[i][0] = Utils.parseInt(tokens[5 + i * 3]);
+            MonIndex[i][1] = Utils.parseInt(tokens[6 + i * 3]);
+            MonIndex[i][2] = Utils.parseInt(tokens[7 + i * 3]);
         }
 
         //Đọc map
         tiles = new int[width][height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 5 + numMonster * 2]); //chuyển từ array 1 chiều thành 2 chiều
+                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 5 + numMonster * 3]); //chuyển từ array 1 chiều thành 2 chiều
             }
         }
     }

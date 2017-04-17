@@ -4,7 +4,7 @@ import dev.game.Handler;
 import dev.game.entities.Entity;
 import dev.game.entities.EntityManager;
 import dev.game.entities.ID;
-import java.awt.Color;
+import dev.game.gfx.Asset;
 import java.awt.Graphics;
 
 public class CombatEnemy extends CombatEntity {
@@ -12,9 +12,13 @@ public class CombatEnemy extends CombatEntity {
     private final float inital;
     private int count = 0;
     private CombatPlayer player;
+    private int[][] MonIndex;
+    private int MonNumber;
 
-    public CombatEnemy(CombatPlayer player, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+    public CombatEnemy(int[][] MonIndex, int MonNumber, CombatPlayer player, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
         super(entitymanager, handler, x, y, id);
+        this.MonIndex = MonIndex;
+        this.MonNumber = MonNumber;
         this.player = player;
         inital = x;
         setHealth(50);
@@ -42,10 +46,11 @@ public class CombatEnemy extends CombatEntity {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.YELLOW);
-        g.fillRect((int) x, (int) y, width, height);
-        g.setColor(Color.WHITE);
-        g.drawRect((int) x, (int) y, width, height);
+        if (MonIndex[MonNumber][2] == 1) {
+            g.drawImage(Asset.enemy1, (int) (x), (int) (y), width, height, null);
+        } else if (MonIndex[MonNumber][2] == 2) {
+            g.drawImage(Asset.enemy2, (int) (x), (int) (y), width, height, null);
+        }
     }
 
     @Override

@@ -10,11 +10,14 @@ import java.awt.Graphics;
 public class CombatPlayer extends CombatEntity {
 
     private int count = 0;
+    private int[][] MonIndex;
+    private int MonNumber;
 
-    public CombatPlayer(EntityManager entitymanager, Handler handler, float x, float y,ID id) {
-        super(entitymanager, handler, x, y,id);
+    public CombatPlayer(int[][] MonIndex, int MonNumber, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+        super(entitymanager, handler, x, y, id);
+        this.MonIndex = MonIndex;
+        this.MonNumber = MonNumber;
         setHealth(100);
-        System.out.println("dev.game.entities.combat.CombatPlayer.<init>()");
     }
 
     @Override
@@ -26,8 +29,8 @@ public class CombatPlayer extends CombatEntity {
             entitymanager.addEntity(new PlayerBullet(entitymanager, handler, x + width / 2, y - 10, ID.PlayerBullet));
         }
         Entity e = checkEntityCollisions(0f, 0f);
-        if (e != null && e.getID()==ID.EnemyBullet) {
-            hurt(1);
+        if (e != null && e.getID() == ID.EnemyBullet) {
+            hurt(MonIndex[MonNumber][2]);
             e.setActive(false);
         }
     }

@@ -26,9 +26,9 @@ public class CombatMenu extends Entity {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(Color.decode("#41245C"));
         g.fillRect(0, 0, 900, 640);
-        g.setColor(Color.BLUE);
+        g.setColor(Color.decode("#FFE180"));
         g.fillRect(640, 0, 260, 640);
         //Enemy health bar
         g.setColor(Color.decode("#FF304F"));
