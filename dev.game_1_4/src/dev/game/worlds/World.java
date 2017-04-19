@@ -70,19 +70,26 @@ public class World {
         spawnY = Utils.parseInt(tokens[3]);//đọc số thứ 4
 
         //Lấy chỉ số cho quái
+        //x,y,loại quái, máu,atk,def,speed,bullet frequency,smart bullet frequency
         numMonster = Utils.parseInt(tokens[4]);
-        MonIndex = new int[numMonster][3];
+        MonIndex = new int[numMonster][9];
         for (int i = 0; i < numMonster; i++) {
-            MonIndex[i][0] = Utils.parseInt(tokens[5 + i * 3]);
-            MonIndex[i][1] = Utils.parseInt(tokens[6 + i * 3]);
-            MonIndex[i][2] = Utils.parseInt(tokens[7 + i * 3]);
+            MonIndex[i][0] = Utils.parseInt(tokens[5 + i * 9]);
+            MonIndex[i][1] = Utils.parseInt(tokens[6 + i * 9]);
+            MonIndex[i][2] = Utils.parseInt(tokens[7 + i * 9]);
+            MonIndex[i][3] = Utils.parseInt(tokens[8 + i * 9]);
+            MonIndex[i][4] = Utils.parseInt(tokens[9 + i * 9]);
+            MonIndex[i][5] = Utils.parseInt(tokens[10 + i * 9]);
+            MonIndex[i][6] = Utils.parseInt(tokens[11 + i * 9]);
+            MonIndex[i][7] = Utils.parseInt(tokens[12 + i * 9]);
+            MonIndex[i][8] = Utils.parseInt(tokens[13 + i * 9]);
         }
 
         //Đọc map
         tiles = new int[width][height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 5 + numMonster * 3]); //chuyển từ array 1 chiều thành 2 chiều
+                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 5 + numMonster * 9]); //chuyển từ array 1 chiều thành 2 chiều
             }
         }
     }

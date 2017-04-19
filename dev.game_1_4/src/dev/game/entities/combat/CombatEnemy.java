@@ -21,7 +21,10 @@ public class CombatEnemy extends CombatEntity {
         this.MonNumber = MonNumber;
         this.player = player;
         inital = x;
-        setHealth(50);
+        setHealth(MonIndex[MonNumber][3]);
+        setAtk(MonIndex[MonNumber][4]);
+        setDef((float) MonIndex[MonNumber][5] / 100);
+        setSpeed(MonIndex[MonNumber][6]);
     }
 
     @Override
@@ -31,15 +34,15 @@ public class CombatEnemy extends CombatEntity {
             speed *= -1; //lock vị trí cách 80px   
         }
         count++;
-        if (count % 50 == 0) {
+        if (count % MonIndex[MonNumber][7] == 0) {
             entitymanager.addEntity(new EnemyBullet(entitymanager, handler, x + width / 2, y + height, ID.EnemyBullet));
         }
-        if (count % 100 == 0) {
+        if (count % MonIndex[MonNumber][8] == 0) {
             entitymanager.addEntity(new SmartBullet(player, entitymanager, handler, x + width / 2, y + height, ID.EnemyBullet));
         }
         Entity e = checkEntityCollisions(0f, 0f);
         if (e != null && e.getID() == ID.PlayerBullet) {
-            hurt(player.getAtk());
+            hurt((int) (player.getAtk() * def));
             e.setActive(false);
         }
     }

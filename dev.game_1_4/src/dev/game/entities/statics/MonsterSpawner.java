@@ -31,7 +31,7 @@ public class MonsterSpawner extends StaticEntity {
         Entity e = checkEntityCollisions(0f, 0f);
         if (e != null && e.getID() == ID.WorldEntity) {
             active = false;
-            CombatPlayer combatPlayer = new CombatPlayer(MonIndex,MonNumber,entitymanager, handler, 300, 500, ID.Player);
+            CombatPlayer combatPlayer = new CombatPlayer(MonIndex[MonNumber][4],entitymanager, handler, 300, 500, ID.Player);
             CombatEnemy combatEnemy = new CombatEnemy(MonIndex,MonNumber,combatPlayer, entitymanager, handler, 300, 0, ID.Enemy);
             entitymanager.addEntity(new CombatMenu(combatPlayer, combatEnemy, handler, x, y, width, height, ID.Menu));
             entitymanager.addEntity(combatPlayer);

@@ -9,17 +9,19 @@ public abstract class CombatEntity extends Entity {
 
     public static final int DEFAULT_HEALTH = 10;
     public static final int DEFAULT_ATTACK = 1;
+    public static final float DEFAULT_DEFENCE = 0.1f;
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 40, DEFAULT_CREATURE_HEIGHT = 40;
 
     protected float speed = DEFAULT_SPEED;
     protected int health = DEFAULT_HEALTH;
     protected int atk = DEFAULT_ATTACK;
+    protected float def = DEFAULT_DEFENCE;
     protected float xMove, yMove;
     EntityManager entitymanager;
 
-    public CombatEntity(EntityManager entitymanager, Handler handler, float x, float y,ID id) {
-        super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT,id);
+    public CombatEntity(EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+        super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT, id);
         this.entitymanager = entitymanager;
     }
 
@@ -47,6 +49,14 @@ public abstract class CombatEntity extends Entity {
 
     public void setAtk(int atk) {
         this.atk = atk;
+    }
+
+    public float getDef() {
+        return def;
+    }
+
+    public void setDef(float def) {
+        this.def = def;
     }
 
     public int getHealth() {

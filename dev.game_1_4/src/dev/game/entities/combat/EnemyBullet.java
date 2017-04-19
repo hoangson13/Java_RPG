@@ -1,7 +1,6 @@
 package dev.game.entities.combat;
 
 import dev.game.Handler;
-import dev.game.entities.Entity;
 import dev.game.entities.EntityManager;
 import dev.game.entities.ID;
 import java.awt.Color;
