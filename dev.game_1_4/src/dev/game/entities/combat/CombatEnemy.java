@@ -4,8 +4,10 @@ import dev.game.Handler;
 import dev.game.entities.Entity;
 import dev.game.entities.EntityManager;
 import dev.game.entities.ID;
+import dev.game.gfx.Animation;
 import dev.game.gfx.Asset;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class CombatEnemy extends CombatEntity {
 
@@ -14,6 +16,7 @@ public class CombatEnemy extends CombatEntity {
     private CombatPlayer player;
     private int[][] MonIndex;
     private int MonNumber;
+    private Animation temp;
 
     public CombatEnemy(int[][] MonIndex, int MonNumber, CombatPlayer player, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
         super(entitymanager, handler, x, y, id);
@@ -25,10 +28,16 @@ public class CombatEnemy extends CombatEntity {
         setAtk(MonIndex[MonNumber][4]);
         setDef((float) MonIndex[MonNumber][5] / 100);
         setSpeed(MonIndex[MonNumber][6]);
+        if (MonIndex[MonNumber][2] == 1) {
+            temp = new Animation(500, Asset.enemy1);
+        } else if (MonIndex[MonNumber][2] == 2) {
+            temp = new Animation(500, Asset.enemy2);
+        }
     }
 
     @Override
     public void tick() {
+        temp.tick();
         x += speed;
         if (x <= inital - 150 || x >= inital + 150) {
             speed *= -1; //lock vị trí cách 80px   
@@ -49,11 +58,7 @@ public class CombatEnemy extends CombatEntity {
 
     @Override
     public void render(Graphics g) {
-        if (MonIndex[MonNumber][2] == 1) {
-            g.drawImage(Asset.enemy1, (int) (x), (int) (y), width, height, null);
-        } else if (MonIndex[MonNumber][2] == 2) {
-            g.drawImage(Asset.enemy2, (int) (x), (int) (y), width, height, null);
-        }
+        g.drawImage(temp.getCurrentFrame(), (int) (x), (int) (y), width, height, null);
     }
 
     @Override

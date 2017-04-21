@@ -9,8 +9,8 @@ import java.awt.Graphics;
 
 public class Player extends Creature {
 
-    Animation aniplayer;
-    EntityManager entitymanager;
+    private Animation aniplayer;
+    private EntityManager entitymanager;
 
     public Player(EntityManager entitymanager, Handler handler, float x, float y,ID id) {
         super(entitymanager, handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT,id);

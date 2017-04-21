@@ -50,5 +50,4 @@ public class EnemyBullet extends CombatEntity {
     public void die() {
 
     }
-
 }
