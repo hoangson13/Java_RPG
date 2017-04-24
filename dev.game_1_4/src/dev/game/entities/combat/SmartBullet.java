@@ -32,10 +32,10 @@ public class SmartBullet extends CombatEntity {
         Xmove = ((float) ((-1.0 / distance) * diffX)) * 2;
         Ymove = ((float) ((-1.0 / distance) * diffY)) * 2;
 
-        if (y <= 0 || y >= handler.getHeight() - 5) {
+        if (y <= 0 || y >= handler.getHeight() - 50) {
             Ymove *= -1;
         }
-        if (x <= 0 || x >= handler.getHeight() - 5) {
+        if (x <= 0 || x >= handler.getHeight() - 10) {
             Xmove *= -1;
         }
 //Đạn biến mất sau 1 time

@@ -36,11 +36,10 @@ public class CombatMenu extends Entity {
         //Enemy health bar
         g.setColor(Color.decode("#FF304F"));
         g.fillRect(650, 30, 200, 20);
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawRect(650, 30, 200, 20);
         g.setColor(Color.decode("#28C7FA"));
         g.fillRect(650, 30, (int) (enemy.getHealth() * se), 20);
-        g.setColor(Color.white);
         if (enemy.getHealth() <= 0) {
             g.drawString("Enemy's HP :" + 0, 650, 20);
         } else {
@@ -49,11 +48,10 @@ public class CombatMenu extends Entity {
         //Player health bar        
         g.setColor(Color.decode("#FF304F"));
         g.fillRect(650, 320, 200, 20);
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawRect(650, 320, 200, 20);
         g.setColor(Color.decode("#28C7FA"));
         g.fillRect(650, 320, (int) (player.getHealth() * pe), 20);
-        g.setColor(Color.white);
         if (player.getHealth() <= 0) {
             g.drawString("Player's HP :" + 0, 650, 310);
         } else {
@@ -64,5 +62,4 @@ public class CombatMenu extends Entity {
     @Override
     public void die() {
     }
-
 }

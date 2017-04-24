@@ -27,10 +27,10 @@ public class EnemyBullet extends CombatEntity {
         count++;
         x += Xmove;
         y += Ymove;
-        if (y <= 0 || y >= handler.getHeight() - 5) {
+        if (y <= 0 || y >= handler.getHeight() - 50) {
             Ymove *= -1;
         }
-        if (x <= 0 || x >= handler.getHeight() - 5) {
+        if (x <= 0 || x >= handler.getHeight() - 10) {
             Xmove *= -1;
         }
 

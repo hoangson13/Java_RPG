@@ -7,7 +7,6 @@ import dev.game.entities.ID;
 import dev.game.gfx.Animation;
 import dev.game.gfx.Asset;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 public class CombatEnemy extends CombatEntity {
 
