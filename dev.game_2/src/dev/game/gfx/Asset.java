@@ -5,7 +5,8 @@ import java.awt.image.BufferedImage;
 public class Asset {
 
     public static BufferedImage dirt, water, grass, rock, fire, ice;
-    public static BufferedImage[] player, enemy1, enemy2;
+    public static BufferedImage[] player_down, player_up, player_left, player_right;
+    public static BufferedImage[] enemy1, enemy2;
     public static BufferedImage[] playbutton, helpbutton, exitbutton;
     private static final int width = 200, height = 200;
 
@@ -31,16 +32,28 @@ public class Asset {
         exitbutton[0] = sheet.crop(width * 4, height, width * 2, height);
         exitbutton[1] = sheet.crop(width * 4, height * 2, width * 2, height);
 
-        player = new BufferedImage[2];
-        player[0] = sheet.crop(0, height * 3, width, height);
-        player[1] = sheet.crop(width, height * 3, width, height);
+        player_down = new BufferedImage[2];
+        player_down[0] = sheet.crop(0, height * 3, width, height);
+        player_down[1] = sheet.crop(width, height * 3, width, height);
+
+        player_right = new BufferedImage[2];
+        player_right[0] = sheet.crop(width * 2, height * 3, width, height);
+        player_right[1] = sheet.crop(width * 3, height * 3, width, height);
+
+        player_left = new BufferedImage[2];
+        player_left[0] = sheet.crop(width * 4, height * 3, width, height);
+        player_left[1] = sheet.crop(width * 5, height * 3, width, height);
+
+        player_up = new BufferedImage[2];
+        player_up[0] = sheet.crop(0, height * 4, width, height);
+        player_up[1] = sheet.crop(width, height * 4, width, height);
 
         enemy1 = new BufferedImage[2];
-        enemy1[0] = sheet.crop(width * 2, height * 3, width, height);
-        enemy1[1] = sheet.crop(width * 3, height * 3, width, height);
+        enemy1[0] = sheet.crop(width * 2, height * 4, width, height);
+        enemy1[1] = sheet.crop(width * 3, height * 4, width, height);
 
         enemy2 = new BufferedImage[2];
-        enemy2[0] = sheet.crop(width * 4, height * 3, width, height);
-        enemy2[1] = sheet.crop(width * 5, height * 3, width, height);
+        enemy2[0] = sheet.crop(width * 4, height * 4, width, height);
+        enemy2[1] = sheet.crop(width * 5, height * 4, width, height);
     }
 }

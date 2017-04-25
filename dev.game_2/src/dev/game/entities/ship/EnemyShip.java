@@ -4,7 +4,7 @@ import dev.game.Handler;
 import dev.game.entities.Entity;
 import dev.game.entities.EntityManager;
 import dev.game.entities.ID;
-import dev.game.entities.combattroop.CombatMenu;
+import dev.game.entities.combattroop.BattleField;
 import dev.game.entities.combattroop.EnemyTroop;
 import dev.game.entities.combattroop.PlayerTroop;
 import dev.game.gfx.Animation;
@@ -40,7 +40,7 @@ public class EnemyShip extends MotherShip {
             active = false;
             PlayerTroop combatPlayer = new PlayerTroop(MonIndex[MonNumber][4], entitymanager, handler, 300, 500, ID.Player);
             EnemyTroop combatEnemy = new EnemyTroop(MonIndex, MonNumber, combatPlayer, entitymanager, handler, 300, 0, ID.Enemy);
-            entitymanager.addEntity(new CombatMenu(combatPlayer, combatEnemy, handler, x, y, width, height, ID.Menu));
+            entitymanager.addEntity(new BattleField(combatPlayer, combatEnemy, handler, x, y, width, height, ID.Menu));
             entitymanager.addEntity(combatPlayer);
             entitymanager.addEntity(combatEnemy);
         }

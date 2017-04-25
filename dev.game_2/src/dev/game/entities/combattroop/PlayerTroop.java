@@ -20,7 +20,7 @@ public class PlayerTroop extends CombatTroop{
         setHealth(1000);
         setAtk(50);
         setDef(0.8f);
-        aniplayer = new Animation(500, Asset.player);
+        aniplayer = new Animation(500, Asset.player_up);
     }
 
     @Override
@@ -44,7 +44,6 @@ public class PlayerTroop extends CombatTroop{
     @Override
     public void render(Graphics g) {
         g.drawImage(aniplayer.getCurrentFrame(), (int)x , (int)y, width, height, null);
-
     }
 
     @Override
