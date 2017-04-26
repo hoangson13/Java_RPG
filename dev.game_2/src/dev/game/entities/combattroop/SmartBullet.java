@@ -11,11 +11,10 @@ public class SmartBullet extends CombatTroop {
 
     private float Xmove = 5, Ymove = 5;
     private int count = 0;
-    private PlayerTroop player;
 
-    public SmartBullet(PlayerTroop player, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+    public SmartBullet(EntityManager entitymanager, Handler handler, float x, float y, ID id, int atk) {
         super(entitymanager, handler, x, y, id);
-        this.player = player;
+        this.atk = atk;
         height = 10;
         width = 10;
     }
@@ -24,13 +23,21 @@ public class SmartBullet extends CombatTroop {
     public void tick() {
         count++;
 
-        x += Xmove;
-        y += Ymove;
-        float diffX = x - player.getX() - 10;
-        float diffY = y - player.getY() - 10;
-        float distance = (float) Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
-        Xmove = ((float) ((-1.0 / distance) * diffX)) * 2;
-        Ymove = ((float) ((-1.0 / distance) * diffY)) * 2;
+        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+            if (e.equals(this)) {
+                continue;
+            }
+            if (e.getID() == ID.Player) {
+                PlayerTroop player = (PlayerTroop) e;
+                x += Xmove;
+                y += Ymove;
+                float diffX = x - player.getX() - 10;
+                float diffY = y - player.getY() - 10;
+                float distance = (float) Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
+                Xmove = ((float) ((-1.0 / distance) * diffX)) * 2;
+                Ymove = ((float) ((-1.0 / distance) * diffY)) * 2;
+            }
+        }
 
         if (y <= 0 || y >= handler.getHeight() - 50) {
             Ymove *= -1;

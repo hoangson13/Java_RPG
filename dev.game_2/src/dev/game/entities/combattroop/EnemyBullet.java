@@ -13,11 +13,12 @@ public class EnemyBullet extends CombatTroop {
     private int Xmove, Ymove;
     private Random r;
 
-    public EnemyBullet(EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+    public EnemyBullet(EntityManager entitymanager, Handler handler, float x, float y, ID id,int atk) {
         super(entitymanager, handler, x, y, id);
         r = new Random();
         height = 10;
         width = 10;
+        this.atk=atk;
         Ymove = r.nextInt(5) + 3;
         Xmove = (r.nextInt(10) - 5);
     }

@@ -8,13 +8,13 @@ import dev.game.gfx.Asset;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class PlayerShip extends MotherShip {
+public class PlayerShip extends Ship {
 
     private Animation animDown, animUp, animLeft, animRight;
     private EntityManager entitymanager;
 
     public PlayerShip(EntityManager entitymanager, Handler handler, float x, float y, ID id) {
-        super(entitymanager, handler, x, y, MotherShip.DEFAULT_CREATURE_WIDTH, MotherShip.DEFAULT_CREATURE_HEIGHT, id);
+        super(entitymanager, handler, x, y, Ship.DEFAULT_CREATURE_WIDTH, Ship.DEFAULT_CREATURE_HEIGHT, id);
         this.entitymanager = entitymanager;
         //x,y là độ lệch từ góc trái nhất vào để tạo bound chỉ trọn trong nv chứ k ra ngoài
         bounds.x = 5;

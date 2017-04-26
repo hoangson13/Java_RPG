@@ -8,15 +8,13 @@ import dev.game.gfx.Animation;
 import dev.game.gfx.Asset;
 import java.awt.Graphics;
 
-public class PlayerTroop extends CombatTroop{
+public class PlayerTroop extends CombatTroop {
 
     private int count = 0;
-    private int EnemyATK;
     private Animation aniplayer;
 
-    public PlayerTroop(int EnemyATK, EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+    public PlayerTroop(EntityManager entitymanager, Handler handler, float x, float y, ID id) {
         super(entitymanager, handler, x, y, id);
-        this.EnemyATK=EnemyATK;
         setHealth(1000);
         setAtk(50);
         setDef(0.8f);
@@ -29,21 +27,33 @@ public class PlayerTroop extends CombatTroop{
         count++;
         x = clamp(0, 600, handler.getMouseManager().getMouseX() - 20);
         y = clamp(0, 600, handler.getMouseManager().getMouseY());
+
         if (handler.getMouseManager().isLeftPressed() == true && count % 10 == 0) {
-            entitymanager.addEntity(new PlayerBullet(entitymanager, handler, x + width / 2, y - 10, ID.PlayerBullet));
+            entitymanager.addEntity(new PlayerBullet(entitymanager, handler, x + width / 2, y - 10, ID.PlayerBullet, atk));
         }
+
         Entity e = checkEntityCollisions(0f, 0f);
-        if (e != null && (e.getID() == ID.EnemyBullet || e.getID() == ID.Enemy)) {
-            hurt((int) (EnemyATK*def));
+        if (e != null && (e.getID() == ID.EnemyBullet || e.getID() == ID.Enemy || e.getID() == ID.SmartEnemyBullet)) {
             if (e.getID() == ID.EnemyBullet) {
-                e.setActive(false);
+                EnemyBullet bullet = (EnemyBullet) e;
+                hurt((int) (bullet.getAtk() * def));
+                bullet.setActive(false);
+            }
+            if (e.getID() == ID.SmartEnemyBullet) {
+                SmartBullet bullet = (SmartBullet) e;
+                hurt((int) (bullet.getAtk() * def));
+                bullet.setActive(false);
+            }
+            if (e.getID() == ID.Enemy) {
+                EnemyTroop troop = (EnemyTroop) e;
+                hurt((int) (troop.getAtk() * def));
             }
         }
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(aniplayer.getCurrentFrame(), (int)x , (int)y, width, height, null);
+        g.drawImage(aniplayer.getCurrentFrame(), (int) x, (int) y, width, height, null);
     }
 
     @Override

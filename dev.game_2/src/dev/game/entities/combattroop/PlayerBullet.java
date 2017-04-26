@@ -10,11 +10,12 @@ public class PlayerBullet extends CombatTroop {
 
     private EntityManager entitymanager;
 
-    public PlayerBullet(EntityManager entitymanager, Handler handler, float x, float y, ID id) {
+    public PlayerBullet(EntityManager entitymanager, Handler handler, float x, float y, ID id,int atk) {
         super(entitymanager, handler, x, y, id);
         this.entitymanager = entitymanager;
         height = 10;
         width = 10;
+        this.atk=atk;
     }
 
     @Override

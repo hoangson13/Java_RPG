@@ -6,7 +6,7 @@ public class Asset {
 
     public static BufferedImage dirt, water, grass, rock, fire, ice;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
-    public static BufferedImage[] enemy1, enemy2;
+    public static BufferedImage[] enemy1, enemy2,enemy3,enemy4,enemyship;
     public static BufferedImage[] playbutton, helpbutton, exitbutton;
     private static final int width = 200, height = 200;
 
@@ -55,5 +55,17 @@ public class Asset {
         enemy2 = new BufferedImage[2];
         enemy2[0] = sheet.crop(width * 4, height * 4, width, height);
         enemy2[1] = sheet.crop(width * 5, height * 4, width, height);
+
+        enemy3 = new BufferedImage[2];
+        enemy3[0] = sheet.crop(0, height * 5, width, height);
+        enemy3[1] = sheet.crop(width , height * 5, width, height);
+
+        enemy4 = new BufferedImage[2];
+        enemy4[0] = sheet.crop(width * 2, height * 5, width, height);
+        enemy4[1] = sheet.crop(width * 3, height * 5, width, height);
+
+        enemyship = new BufferedImage[2];
+        enemyship[0] = sheet.crop(width * 4, height * 5, width, height);
+        enemyship[1] = sheet.crop(width * 5, height * 5, width, height);
     }
 }
