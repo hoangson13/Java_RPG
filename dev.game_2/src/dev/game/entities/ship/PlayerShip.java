@@ -1,8 +1,11 @@
 package dev.game.entities.ship;
 
 import dev.game.Handler;
+import dev.game.entities.Entity;
 import dev.game.entities.EntityManager;
 import dev.game.entities.ID;
+import dev.game.entities.combattroop.BattleField;
+import dev.game.entities.combattroop.PlayerTroop;
 import dev.game.gfx.Animation;
 import dev.game.gfx.Asset;
 import java.awt.Graphics;
@@ -37,6 +40,12 @@ public class PlayerShip extends Ship {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+
+        Entity e = checkEntityCollisions(0f, 0f);
+        if (e != null && e.getID() == ID.WorldEntity) {
+            entitymanager.addEntity(new BattleField(handler, x, y, width, height, ID.Menu));
+            entitymanager.addEntity(new PlayerTroop(entitymanager, handler, 300, 500, ID.Player));
+        }
     }
 
     private void getInput() {

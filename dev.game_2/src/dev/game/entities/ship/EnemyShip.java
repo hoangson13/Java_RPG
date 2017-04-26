@@ -24,7 +24,7 @@ public class EnemyShip extends Ship {
 
         this.x = MonIndex[MonNumber][0];
         this.y = MonIndex[MonNumber][1];
-        ship= new Animation(500, Asset.enemyship);
+        ship = new Animation(500, Asset.enemyship);
     }
 
     @Override
@@ -33,11 +33,7 @@ public class EnemyShip extends Ship {
         Entity e = checkEntityCollisions(0f, 0f);
         if (e != null && e.getID() == ID.WorldEntity) {
             active = false;
-            PlayerTroop combatPlayer = new PlayerTroop(entitymanager, handler, 300, 500, ID.Player);
-            EnemyTroop combatEnemy = new EnemyTroop(MonIndex, MonNumber, combatPlayer, entitymanager, handler, 300, 0, ID.Enemy);
-            entitymanager.addEntity(new BattleField(combatPlayer, combatEnemy, handler, x, y, width, height, ID.Menu));
-            entitymanager.addEntity(combatPlayer);
-            entitymanager.addEntity(combatEnemy);
+            entitymanager.addEntity(new EnemyTroop(MonIndex, MonNumber, entitymanager, handler, 300, 0, ID.Enemy));
         }
     }
 
