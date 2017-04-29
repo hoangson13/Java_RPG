@@ -8,6 +8,7 @@ public enum ID {
     Enemy,
     EnemyBullet,
     SmartEnemyBullet,
+    Coin,
     Trail;
 
 }

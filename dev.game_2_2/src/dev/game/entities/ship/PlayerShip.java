@@ -43,7 +43,7 @@ public class PlayerShip extends Ship {
 
         Entity e = checkEntityCollisions(0f, 0f);
         if (e != null && e.getID() == ID.WorldEntity) {
-            entitymanager.addEntity(new BattleField(handler, x, y, width, height, ID.Menu));
+            entitymanager.addEntity(new BattleField(entitymanager,handler, x, y, width, height, ID.Menu));
             entitymanager.addEntity(new PlayerTroop(entitymanager, handler, 300, 500, ID.Player));
         }
     }
