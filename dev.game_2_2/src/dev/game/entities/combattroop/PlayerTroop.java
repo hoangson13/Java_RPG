@@ -41,7 +41,7 @@ public class PlayerTroop extends CombatTroop {
         }
 
         Entity e = checkEntityCollisions(0f, 0f);
-        if (e != null && (e.getID() == ID.EnemyBullet || e.getID() == ID.Enemy || e.getID() == ID.SmartEnemyBullet)) {
+        if (e != null && (e.getID() == ID.EnemyBullet || e.getID() == ID.EnemyTroop || e.getID() == ID.SmartEnemyBullet)) {
             if (e.getID() == ID.EnemyBullet) {
                 EnemyBullet bullet = (EnemyBullet) e;
                 hurt((int) (bullet.getAtk() * def));
@@ -52,7 +52,7 @@ public class PlayerTroop extends CombatTroop {
                 hurt((int) (bullet.getAtk() * def));
                 bullet.setActive(false);
             }
-            if (e.getID() == ID.Enemy) {
+            if (e.getID() == ID.EnemyTroop) {
                 EnemyTroop troop = (EnemyTroop) e;
                 hurt((int) (troop.getAtk() * def));
             }

@@ -28,7 +28,7 @@ public class EnemySmartBullet extends Bullet {
             if (e.equals(this)) {
                 continue;
             }
-            if (e.getID() == ID.Player) {
+            if (e.getID() == ID.PlayerTroop) {
                 PlayerTroop player = (PlayerTroop) e;
                 x += Xmove;
                 y += Ymove;

@@ -68,7 +68,6 @@ public class Game implements Runnable {
 
         State.setState(menuState);
     }
-    //Tick là thay đổi liên quan tới chuyển động
 
     private void tick() {
         keymanager.tick(); //thay đổi mỗi khi ấn nút

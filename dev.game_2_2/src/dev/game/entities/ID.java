@@ -1,14 +1,15 @@
 package dev.game.entities;
 
 public enum ID {
-    WorldEntity,
+    Coin,
+    Potion,
     Player,
     Menu,
     PlayerBullet,
     Enemy,
     EnemyBullet,
     SmartEnemyBullet,
-    Coin,
-    Trail;
-
+    Trail,
+    PlayerTroop,
+    EnemyTroop;
 }

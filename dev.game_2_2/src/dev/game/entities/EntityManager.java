@@ -3,11 +3,23 @@ package dev.game.entities;
 import dev.game.Handler;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Comparator;
+import dev.game.entities.ID;
 
 public class EntityManager {
 
     private Handler handler;
     private ArrayList<Entity> entities;
+    private Comparator<Entity> renderSorter = new Comparator<Entity>(){
+
+		@Override
+		public int compare(Entity a, Entity b) {
+			if(a.getID() ==  ID.Menu &&(b.getID() ==ID.PlayerTroop || b.getID() ==ID.EnemyTroop))
+				return -1;
+			return 1;
+		}
+    	
+    };
 
     public EntityManager(Handler handler) {
         this.handler = handler;
@@ -25,6 +37,7 @@ public class EntityManager {
                 entities.remove(e);
             }
         }
+        entities.sort(renderSorter);
     }
 
     public void render(Graphics g) {
